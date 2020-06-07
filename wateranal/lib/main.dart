@@ -246,8 +246,8 @@ class Resources extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text("Water Contamination", style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text('txt')
+                              Text("Article Name", style: TextStyle(fontWeight: FontWeight.bold)),
+                              Text('Author Name')
                             ],
                           )
                       ),
@@ -271,9 +271,52 @@ class Resources extends StatelessWidget {
                     ),
                   ),
                 ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                  alignment: Alignment.centerLeft,
+                  child: Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text('Article Description')
+                        ],
+                      )
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: FlatButton(
+                                  child: const Text('Read'),
+                                  onPressed: () {/* ... */},
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: FlatButton(
+                                  child: const Text('Save'),
+                                  onPressed: () {/* ... */},
+                                ),
+                              )
+                            ],
+                          )
+                      ),
+
+                    ],
+                  )
+                ),
+
               ],
             )
-          )
+          ),
+
 
         ],
       ),
@@ -313,6 +356,7 @@ class Settings extends StatelessWidget {
           child: Text('Go back!'),
         ),
       ),
+      drawer: DrawerTab()
     );
   }
 }
@@ -340,14 +384,27 @@ class About extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: Text('Go back!'),
+      body: Card(
+        margin: EdgeInsets.all(10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        elevation: 5,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const ListTile(
+              title: Text('Wateranal', style: TextStyle(fontWeight: FontWeight.bold)),
+            ),
+            Container(
+              margin: EdgeInsets.all(20),
+              alignment: Alignment.centerLeft,
+              child:Text('An app that helps households and communities prepare and deal with severe drought or storm events by combining current water quality information from hardware devices with historical data and alerting users with resources and tips, data can be sent to water suppliers to help with relief efforts.')
+            )
+          ],
         ),
       ),
+      drawer: DrawerTab()
     );
   }
 }

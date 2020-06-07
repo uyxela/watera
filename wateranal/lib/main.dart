@@ -1,71 +1,36 @@
-// Flutter code sample for AppBar
-
-// This sample shows an [AppBar] with two simple actions. The first action
-// opens a [SnackBar], while the second action navigates to a new page.
-
 import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
-void main() => runApp(MyApp());
+void main() => runApp(Wateranal());
 
 /// This Widget is the main application widget.
-class MyApp extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
+class Wateranal extends StatelessWidget {
+  static const String _title = 'Wateranal';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      home: MyStatelessWidget(),
+      home: Menu(),
     );
   }
 }
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
+final SnackBar snackBar = const SnackBar(content: Text('placeholder'));
 
-void openPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(
-    builder: (BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.snackbar),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              scaffoldKey.currentState.showSnackBar(snackBar);
-            },
-          ),
-          title: const Text('Next page'),
-        ),
-        body: const Center(
-          child: Text(
-            'This is the next page',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      );
-    },
-  ));
-}
 
 /// This is the stateless widget that the main application instantiates.
-class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key key}) : super(key: key);
-
+class Menu extends StatelessWidget {
+  Menu({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: const Text('AppBar Demo'),
+        title: const Text('Wateranal'),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              scaffoldKey.currentState.showSnackBar(snackBar);
-            },
-          ),
+
           IconButton(
             icon: const Icon(Icons.share),
             tooltip: 'Show Snackbar',
@@ -96,13 +61,8 @@ class MyStatelessWidget extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: IconButton(
-                        icon: const Icon(Icons.bookmark),
-                        tooltip: 'Save',
-                        onPressed: () {
-                          scaffoldKey.currentState.showSnackBar(snackBar);
-                        },
-                      ),
+                      child: const Icon(Icons.bookmark),
+
                     ),
                     Expanded(
                       flex: 5,
@@ -120,13 +80,8 @@ class MyStatelessWidget extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: IconButton(
-                        icon: const Icon(Icons.bookmark),
-                        tooltip: 'Save',
-                        onPressed: () {
-                          scaffoldKey.currentState.showSnackBar(snackBar);
-                        },
-                      ),
+                      child: const Icon(Icons.bookmark),
+
                     ),
                     Expanded(
                         flex: 5,
@@ -144,13 +99,7 @@ class MyStatelessWidget extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: IconButton(
-                        icon: const Icon(Icons.bookmark),
-                        tooltip: 'Save',
-                        onPressed: () {
-                          scaffoldKey.currentState.showSnackBar(snackBar);
-                        },
-                      ),
+                      child: const Icon(Icons.bookmark),
                     ),
                     Expanded(
                         flex: 5,
@@ -177,39 +126,222 @@ class MyStatelessWidget extends StatelessWidget {
             ),
           ),
         ],
-      )
+      ),
+      drawer: DrawerTab()
     );
   }
 }
-class CardWid extends StatelessWidget {
-  CardWid({Key key}) : super(key: key);
 
+class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const ListTile(
-              leading: Icon(Icons.album),
-              title: Text('The Enchanted Nightingale'),
-              subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-            ),
-            ButtonBar(
-              children: <Widget>[
-                FlatButton(
-                  child: const Text('BUY TICKETS'),
-                  onPressed: () {/* ... */},
-                ),
-                FlatButton(
-                  child: const Text('LISTEN'),
-                  onPressed: () {/* ... */},
-                ),
-              ],
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+        actions: <Widget>[
+
+          IconButton(
+            icon: const Icon(Icons.share),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.youtube_searched_for),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+
+        ],
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: Text('Go back!'),
         ),
+      ),
+      drawer: DrawerTab()
+    );
+  }
+}
+class Resources extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Resources'),
+        actions: <Widget>[
+
+          IconButton(
+            icon: const Icon(Icons.share),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.youtube_searched_for),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+      drawer: DrawerTab()
+    );
+  }
+}
+class Settings extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+        actions: <Widget>[
+
+          IconButton(
+            icon: const Icon(Icons.share),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.youtube_searched_for),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+class About extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('About'),
+        actions: <Widget>[
+
+          IconButton(
+            icon: const Icon(Icons.share),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.youtube_searched_for),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class DrawerTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+            accountName: Text("Shar Quisha"),
+            accountEmail: Text("example@mail.com"),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor:
+              Theme.of(context).platform == TargetPlatform.iOS
+                  ? Colors.blue
+                  : Colors.white,
+              child: Text(
+                "A",
+                style: TextStyle(fontSize: 40.0),
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text("Home"),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Menu()));
+            },
+          ),
+          ListTile(
+            title: Text("Dashboard"),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Dashboard()));
+            },
+          ),
+          ListTile(
+            title: Text("Resources"),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Resources()));
+            },
+          ),
+          ListTile(
+            title: Text("Settings"),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => Settings()));
+            },
+          ),
+          ListTile(
+            title: Text("About"),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => About()));
+            },
+          ),
+        ],
       ),
     );
   }
